@@ -28,7 +28,8 @@ public class User {
         return this.gender;
     }
     public String getUsername(){
-        return this.username;
+        username = getName();
+        return username.charAt(0)+;
     }
     public String getPassword(){
         return this.password;
