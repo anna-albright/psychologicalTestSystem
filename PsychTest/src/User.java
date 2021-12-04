@@ -38,16 +38,16 @@ public class User {
     }
 
     public void createAccaunt() throws IOException {
-            PrintWriter outputStream = null;
-            try{
-                outputStream =  new PrintWriter(new FileOutputStream("accaunt.txt"));
-            }
-            catch (FileNotFoundException e) {
-                System.out.println("Error opening the file stuff.txt.");
-                System.exit(0);
-            }
-            outputStream.println(getUsername() + getUsername());
-            outputStream.close();
+//            PrintWriter outputStream = null;
+//            try{
+//                outputStream =  new PrintWriter(new FileOutputStream("accaunt.txt"));
+//            }
+//            catch (FileNotFoundException e) {
+//                System.out.println("Error opening the file stuff.txt.");
+//                System.exit(0);
+//            }
+//            outputStream.println(getUsername() + getUsername());
+//            outputStream.close();
         }
 
     }
