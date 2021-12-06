@@ -27,10 +27,10 @@ public class User {
     public String getGender(){
         return this.gender;
     }
-    public String getUsername(){
+   /* public String getUsername(){
         username = getName();
         return username.charAt(0)+;
-    }
+    } */
     public String getPassword(){
         return this.password;
     }
