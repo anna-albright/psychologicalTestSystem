@@ -8,9 +8,15 @@ public class WelcomePage implements ActionListener {
     JFrame frame = new JFrame();
     ImageIcon icon = new ImageIcon("PsychTest/src/Photos/CS210 GUI Mockup test page.jpg");
     JLabel testPageImage = new JLabel(icon);
+    // all buttons declaration.
     JButton personalityButton = new JButton("Personality");
     JButton achievementButton = new JButton("Achievement");
     JButton attitudeButton = new JButton("Attitude");
+    JButton emotionalIntelligenceButton = new JButton("Emotional Intelligence");
+    JButton intelligenceButton = new JButton("Intelligence");
+    JButton neuropsychologyButton = new JButton("Neuropsychology");
+    JButton projectiveButton = new JButton("Projective");
+    JButton aptitudeButton = new JButton("Aptitude");
 
     JLabel welcomeLabel = new JLabel("Hello!");
 
@@ -23,7 +29,8 @@ public class WelcomePage implements ActionListener {
 
         //Personality button
         personalityButton.setBounds(103,102,523,38);
-        personalityButton.setFocusPainted(false); // remove preselected view
+        personalityButton.setFont(new Font("Helvetica",Font.PLAIN,16));
+        personalityButton.setFocusPainted(false);
         personalityButton.addActionListener(this);
 
         /** Mouse Events on hover (personality) */
@@ -39,6 +46,7 @@ public class WelcomePage implements ActionListener {
 
         // Achievement Button
         achievementButton.setBounds(103,149,523,38);
+        achievementButton.setFont(new Font("Helvetica",Font.PLAIN,16));
         achievementButton.addActionListener(this);
 
         /** Mouse Events on hover (achievement) */
@@ -53,6 +61,7 @@ public class WelcomePage implements ActionListener {
 
         //attitude Button
         attitudeButton.setBounds(103,196,523,38);
+        attitudeButton.setFont(new Font("Helvetica",Font.PLAIN,16));
         attitudeButton.addActionListener(this);
 
         /** Mouse Events on hover (attitude) */
@@ -65,6 +74,78 @@ public class WelcomePage implements ActionListener {
             }
         });
 
+        //EMOTIONAL INTELLIGENCE button
+        emotionalIntelligenceButton.setBounds(103,243,523,38);
+        emotionalIntelligenceButton.setFont(new Font("Helvetica",Font.PLAIN,16));
+        emotionalIntelligenceButton.addActionListener(this);
+
+        /** Mouse Events on hover (emotional intelligence) */
+        emotionalIntelligenceButton.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+                emotionalIntelligenceButton.setForeground(Color.GREEN);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                emotionalIntelligenceButton.setForeground(UIManager.getColor(new Color(100,200,255)));
+            }
+        });
+
+        //intelligence button
+        intelligenceButton.setBounds(103,290,523,38);
+        intelligenceButton.setFont(new Font("Helvetica",Font.PLAIN,16));
+        intelligenceButton.addActionListener(this);
+
+        /** Mouse Events on hover (intelligence) */
+        intelligenceButton.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){ intelligenceButton.setForeground(Color.GREEN);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                intelligenceButton.setForeground(UIManager.getColor(new Color(100,200,255)));
+            }
+        });
+
+        //neuropsychology button
+        neuropsychologyButton.setBounds(103,337,523,38);
+        neuropsychologyButton.setFont(new Font("Helvetica",Font.PLAIN,16));
+        neuropsychologyButton.addActionListener(this);
+
+        /** Mouse Events on hover (neuropsychology) */
+        neuropsychologyButton.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){ neuropsychologyButton.setForeground(Color.GREEN);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                neuropsychologyButton.setForeground(UIManager.getColor(new Color(100,200,255)));
+            }
+        });
+
+        //Projective button
+        projectiveButton.setBounds(103,384,523,38);
+        projectiveButton.setFont(new Font("Helvetica",Font.PLAIN,16));
+        projectiveButton.addActionListener(this);
+
+        /** Mouse Events on hover (Projective) */
+        projectiveButton.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){ projectiveButton.setForeground(Color.GREEN);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                projectiveButton.setForeground(UIManager.getColor(new Color(100,200,255)));
+            }
+        });
+
+        //Aptitude button
+        aptitudeButton.setBounds(103,431,523,38);
+        aptitudeButton.setFont(new Font("Helvetica",Font.PLAIN,16));
+        aptitudeButton.addActionListener(this);
+
+        /** Mouse Events on hover (aptitude) */
+        aptitudeButton.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt){ aptitudeButton.setForeground(Color.GREEN);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                aptitudeButton.setForeground(UIManager.getColor(new Color(100,200,255)));
+            }
+        });
+
+
 
 
 
@@ -75,6 +156,11 @@ public class WelcomePage implements ActionListener {
         frame.add(personalityButton);
         frame.add(achievementButton);
         frame.add(attitudeButton);
+        frame.add(emotionalIntelligenceButton);
+        frame.add(intelligenceButton);
+        frame.add(neuropsychologyButton);
+        frame.add(projectiveButton);
+        frame.add(aptitudeButton);
         frame.add(testPageImage);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,7 +170,7 @@ public class WelcomePage implements ActionListener {
         frame.setVisible(true);
     }
 
-    /** Contols the actions when buttons are clicked
+    /** Controls the actions when buttons are clicked
      * Param e - The action event variable
      */
     public void actionPerformed(ActionEvent e) {
