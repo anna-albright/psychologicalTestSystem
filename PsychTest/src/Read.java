@@ -4,8 +4,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Read {
-    static String LOCATION_PRESET="./PsychTest/data/";
-
+    //static String LOCATION_PRESET="./PsychTest/data/";
+    static String LOCATION_PRESET="";
     //returns each line of the file as an array
     public static String[] fileToArray(String fileName)
     {

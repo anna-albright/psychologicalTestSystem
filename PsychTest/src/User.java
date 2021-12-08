@@ -46,13 +46,11 @@ public class User {
               keyboard = new Scanner(System.in);
               System.out.println("Username:");
               username = keyboard.next();
-              //setUsername(username);
+
               System.out.println("Password:");
               password = keyboard.next();
-              //setPassword(password);
               keyboard.close();
-
-              String[] infos = Read.fileToArray("user/accountInfo/account.txt");
+              String[] infos = Read.fileToArray("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt");
               boolean existed = false;
               for (String s:infos){
                   String[] pair = s.split(" ");
@@ -63,18 +61,43 @@ public class User {
               }
               if(existed == false){
                   writeAccount(username, password);
+                  //setUsername(username);
+                  //setPassword(password);
               }else{
                   System.out.println("Already exists. Please use another name and password");
               }
         }
 
         public void verifyCredentials(){
+//            Scanner keyboard;
+//            String username, password;
+//            keyboard = new Scanner(System.in);
+//            System.out.println("Username:");
+//            username = keyboard.next();
+//
+//            System.out.println("Password:");
+//            password = keyboard.next();
+//            keyboard.close();
+//            String[] infos = Read.fileToArray("user/accountInfo/account.txt");
+//            boolean existed = false;
+//            for (String s:infos){
+//                String[] pair = s.split(" ");
+//                if(pair[0].equals(username)){
+//                    existed=true;
+//                    break;
+//                }
+//            }
+//            if(existed == false){
+//                System.out.println("We have a problem with sign you in.");
+//            }else{
+//                System.out.println("You are sign in!");
+//            }
 
         }
 
         public void writeAccount(String username, String password) throws  IOException{
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("./PsychTest/data/user/accountInfo/account.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt", true));
             writer.append("\n");
             writer.append(username+" "+ password);
             writer.close();
