@@ -12,6 +12,8 @@ public class MainClass {
         //prints entire file contents to the console for our convenience
         //Read.previewFileContents("surveys/PERSONALITY - 16 Personality Factors.txt");
         User newuser = new User();
-        newuser.createAccount();
+        String[] info = newuser.input();
+        System.out.println(newuser.verifyCredentials(info));
+        //newuser.createAccount(info);
     }
 }
