@@ -1,6 +1,11 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class MainClass {
     public static void main(String[] args) {
+
 
         //Note that the file reader is already pre set to read files within the "data" folder :)
 

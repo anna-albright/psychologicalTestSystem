@@ -23,7 +23,10 @@ public class LoginPage implements ActionListener {
 
     HashMap<String, String> loginInfo = new HashMap<String, String>();
 
-    /** The Constructor for an LoginPage. */
+    /**
+     *
+     * @param loginInfoOriginal
+     */
     LoginPage(HashMap<String, String> loginInfoOriginal){
 
         loginInfo = loginInfoOriginal;
@@ -73,6 +76,10 @@ public class LoginPage implements ActionListener {
         frame.setVisible(true);
     }
 
+    /** Controls the action events
+     *
+     * @param e controls the source of the button clicked
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == resetButton){

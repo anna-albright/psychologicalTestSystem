@@ -28,6 +28,7 @@ public class WelcomePage implements ActionListener {
         welcomeLabel.setForeground(Color.lightGray);
 
         //Personality button
+
         /*
         personalityButton.setBounds(103,102,523,38);
         personalityButton.setFont(new Font("Helvetica",Font.PLAIN,16));
@@ -189,8 +190,9 @@ public class WelcomePage implements ActionListener {
     }
 
 
-    /** Healper Method that creates a preset button
-     *Param button - passes in the declared button that will be altered
+    /** To minimize code and craft new buttons
+     *
+     * @param button the button that will be edited with new values
      */
     public void buttonCrafter(JButton button){
         button.setBounds(103,102,523,38);
@@ -198,7 +200,6 @@ public class WelcomePage implements ActionListener {
         button.setFocusPainted(false);
         button.addActionListener(this);
 
-        /** Mouse Events on hover (personality) */
         button.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseEntered(java.awt.event.MouseEvent evt){
                 button.setForeground(Color.GREEN);
@@ -209,9 +210,6 @@ public class WelcomePage implements ActionListener {
         });
     }
 
-    /** Controls the actions when buttons are clicked
-     * Param e - The action event variable
-     */
     public void actionPerformed(ActionEvent e) {
 
     }
