@@ -40,27 +40,18 @@ public class User {
         return this.age;
     }
 
-    public void createAccount() throws IOException {
-              Scanner keyboard;
-              String username, password;
-              keyboard = new Scanner(System.in);
-              System.out.println("Username:");
-              username = keyboard.next();
-
-              System.out.println("Password:");
-              password = keyboard.next();
-              keyboard.close();
+    public void createAccount(String[] input) throws IOException {
               String[] infos = Read.fileToArray("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt");
               boolean existed = false;
               for (String s:infos){
                   String[] pair = s.split(" ");
-                  if(pair[0].equals(username) && pair[1].equals(password)){
+                  if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
                       existed=true;
                       break;
                   }
               }
               if(existed == false){
-                  writeAccount(username, password);
+                  writeAccount(input[0], input[1]);
                   //setUsername(username);
                   //setPassword(password);
               }else{
@@ -72,33 +63,35 @@ public class User {
 
     }
 
-        public void verifyCredentials(){
-            Scanner keyboard;
-            String username, password;
-            keyboard = new Scanner(System.in);
-            System.out.println("Username:");
-            username = keyboard.next();
-
-            System.out.println("Password:");
-            password = keyboard.next();
-            keyboard.close();
+        public String verifyCredentials(String[] input){
             String[] infos = Read.fileToArray("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt");
             boolean existed = false;
             for (String s:infos){
                 String[] pair = s.split(" ");
-                if(pair[0].equals(username)){
+                if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
                     existed=true;
                     break;
                 }
             }
             if(existed == false){
-                System.out.println("We have a problem with sign you in.");
+                return "We have a problem with sign you in.";
             }else{
-                System.out.println("You are sign in!");
+                return "You are sign in!";
             }
-
         }
 
+        public String[] input(){
+            String[] input = new String[2];
+            Scanner keyboard;
+            //String username, password;
+            keyboard = new Scanner(System.in);
+            System.out.println("Username:");
+            input[0] = keyboard.next();
+            System.out.println("Password:");
+            input[1] = keyboard.next();
+            keyboard.close();
+            return input;
+        }
         public void writeAccount(String username, String password) throws  IOException{
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt", true));
