@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 public class User {
-    public static final String FILE_NAME = "account.txt";
     private String name, gender, username, password;
     private int age;
 
@@ -58,9 +57,6 @@ public class User {
         }else{
             System.out.println("Already exists. Please use another name and password");
         }
-//        URL res = getClass().getClassLoader().getResource("account.txt");
-//        File file = Paths.get(res.toURI()).toFile();
-//        String absolutePath = file.getAbsolutePath();
 
     }
 
@@ -84,7 +80,6 @@ public class User {
     public String[] input(){
         String[] input = new String[2];
         Scanner keyboard;
-        //String username, password;
         keyboard = new Scanner(System.in);
         System.out.println("Username:");
         input[0] = keyboard.next();
@@ -95,7 +90,7 @@ public class User {
     }
     public void writeAccount(String username, String password) throws  IOException{
 
-/*            BufferedWriter writer = new BufferedWriter(new FileWriter("user/accountInfo/account.txt", true));
+/*          BufferedWriter writer = new BufferedWriter(new FileWriter("user/accountInfo/account.txt", true));
             writer.append("\n");
             writer.append(username+" "+ password);
             writer.close();*/

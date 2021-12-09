@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -30,11 +27,13 @@ public class Read {
     public static void arrayListToFile(String fileName, ArrayList<String> temp)
     {
         try {
-            FileWriter writer = new FileWriter(LOCATION_PRESET+fileName);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("user/accountInfo/account.txt", true));
 
             for (String s : temp)
             {
-                writer.write(s);
+                writer.append("\n");
+                writer.append(s);
+
             }
             writer.close();
 
