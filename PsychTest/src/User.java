@@ -1,4 +1,7 @@
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 public class User {
@@ -40,8 +43,21 @@ public class User {
         return this.age;
     }
 
-    public void createAccount(String[] input) throws IOException {
-              String[] infos = Read.fileToArray("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt");
+    public void createAccount(String[] input) throws IOException, URISyntaxException {
+//             URL res = getClass().getClassLoader().getResource("account.txt");
+//             File file = Paths.get(res.toURI()).toFile();
+//             String absolutePath = file.getAbsolutePath();
+
+//             File file = new File("./PsychTest/data/user/accountInfo/account.txt");
+//             String absolutePath = file.getAbsolutePath();
+
+//               URL localPackage = this.getClass().getResource("./PsychTest/data/user/accountInfo/account.txt");
+//               URL urlLoader = User.class.getProtectionDomain().getCodeSource().getLocation();
+//               String localDir = localPackage.getPath();
+//               String loaderDir = urlLoader.getPath();
+
+
+              String[] infos = Read.fileToArray("user/accountInfo/account.txt");
               boolean existed = false;
               for (String s:infos){
                   String[] pair = s.split(" ");
@@ -57,14 +73,10 @@ public class User {
               }else{
                   System.out.println("Already exists. Please use another name and password");
               }
-//        URL res = getClass().getClassLoader().getResource("account.txt");
-//        File file = Paths.get(res.toURI()).toFile();
-//        String absolutePath = file.getAbsolutePath();
-
     }
 
         public String verifyCredentials(String[] input){
-            String[] infos = Read.fileToArray("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt");
+            String[] infos = Read.fileToArray("user/accountInfo/account.txt");
             boolean existed = false;
             for (String s:infos){
                 String[] pair = s.split(" ");
@@ -93,7 +105,6 @@ public class User {
             return input;
         }
         public void writeAccount(String username, String password) throws  IOException{
-
             BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt", true));
             writer.append("\n");
             writer.append(username+" "+ password);
