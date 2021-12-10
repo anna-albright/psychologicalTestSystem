@@ -1,8 +1,13 @@
 public class Singleton {
     private static Singleton uniqueInstance = null;
-    public String filePath;
+
+    public String getAccountFilePath() {
+        return accountFilePath;
+    }
+
+    public String accountFilePath;
     private Singleton(){
-        filePath = "";
+        accountFilePath = "./PsychTest/data/user/accountInfo/account.txt";
     }
     public  static  Singleton getInstance(){
         if(uniqueInstance == null)
