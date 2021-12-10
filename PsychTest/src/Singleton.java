@@ -7,7 +7,7 @@ public class Singleton {
 
     public String accountFilePath;
     private Singleton(){
-        accountFilePath = "./PsychTest/data/user/accountInfo/account.txt";
+        accountFilePath = "user/accountInfo/account.txt";
     }
     public  static  Singleton getInstance(){
         if(uniqueInstance == null)
