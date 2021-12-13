@@ -1,4 +1,9 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -24,32 +29,33 @@ public class Read {
         }
         return null;
     }
-    public static void arrayListToFile(String fileName, ArrayList<String> temp)
+    public static void arrayListToFile(String fileName, List temp)
     {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("user/accountInfo/account.txt", true));
+            FileWriter writer = new FileWriter(LOCATION_PRESET+fileName);
 
-            for (String s : temp)
+            for (Object s : temp)
             {
-                writer.append("\n");
-                writer.append(s);
-
+                writer.write((String)s+"\n");
             }
             writer.close();
 
-            System.out.println("Success: Wrote to file!");
+            //System.out.println("Success: Wrote to file!");
 
         } catch (IOException e) {
             System.out.println("Error: Could not write to file!");
             e.printStackTrace();
         }
     }
-    public static void previewArrayList(ArrayList<String> temp){
-        for (String s : temp)
+
+    //prints a list
+    public static void previewArrayList(List temp){
+        for (Object s : temp)
         {
-            System.out.println(s);
+            System.out.println((String)s);
         }
     }
+
     //prints file contents to console for your convenience
     public static void previewFileContents(String fileName)
     {
@@ -58,5 +64,18 @@ public class Read {
             System.out.println(s);
         }
         System.out.println("\n------------------------------------------------------");
+    }
+
+    //prints out names of files in a folder
+    public static ArrayList<String> fileNamesInFolderToArrayList(String fileName)
+    {
+        ArrayList<String> temp = new ArrayList<>();
+        File folder = new File(LOCATION_PRESET+fileName);
+        for(File s : folder.listFiles())
+        {
+            temp.add(s.getName()); //can use isFile or isDirectory for more specificity
+        }
+        return temp;
+
     }
 }

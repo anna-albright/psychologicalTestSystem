@@ -1,54 +1,165 @@
-public class Survey {
-    String categoryName;
-    String surveyName;
-    boolean consentChoice;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Observable;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Survey extends Observable {
+    private String categoryName, surveyName; //category and survey name
+    private ArrayList<String> userAnswers=new ArrayList<>(); //arrayList to store user responses
+    private boolean consentChoice=false; //user's informed consent choice
+    private Map<String, List<String>> surveyMap = new HashMap<String, List<String>>(); //hashmap to store categories and surveys
+
+    public String getCategoryName() {return categoryName;};
+    public void setCategoryName(String categoryName) {this.categoryName=categoryName;}
+    public String getSurveyName() {return surveyName;};
+    public void setSurveyName(String categoryName) {this.surveyName=surveyName;}
+    public ArrayList<String> getUserAnswers() {
+        return userAnswers;
+    }
+    public void setUserAnswers(ArrayList<String> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
+    public boolean getConsentChoice() {
+        return consentChoice;
+    }
+    public void setConsentChoice(boolean consentChoice) {
+        this.consentChoice = consentChoice;
+    }
     public Survey()
     {
-
+        updateAvailableSurveys();
     }
-
-    public void select()
+    public Survey(String categoryName, String surveyName)
     {
-
+        this.categoryName=categoryName;
+        this.surveyName=surveyName;
+        updateAvailableSurveys();
     }
-    public void displayConsent()
+    /*    public ArrayList<String> prepareSurveyAll()
+        {
+            ArrayList<String> raw = Read.fileToArrayList("surveys/"+this.categoryName+" - "+this.surveyName+".txt");
+            ArrayList<String> temp = new ArrayList<>();
+            int replaceQ=1;
+            char replaceA='a';
+            for (String s : raw)
+            {
+                if (s.contains("Q |"))
+                {
+                    s=s.replace("Q |", String.valueOf(replaceQ)+".");
+                    replaceQ++;
+                    replaceA='a';
+                }
+                else if (s.contains("A |"))
+                {
+                    s=s.replace("A |", (Character.toString((char)replaceA))+".");
+                    replaceA++;
+                }
+                temp.add(s);
+            }
+            return temp;
+
+        }
+
+        }*/
+    public ArrayList<String> showConsentForm()
     {
-
-
+        return(Read.fileToArrayList("consentForm.txt"));
     }
     public void takeSurvey()
     {
-        //will need a variable to store user answers
+        //add mouse click functionality with java fx later
+        String[] validInput=new String[]{"1aq","2bw","3ce","4dr","5et","6ey"};
+        String[] finalOutput=new String[]{"a","b","c","d","e","f"};
 
+        Scanner keyboard;
+        keyboard = new Scanner(System.in);
+
+        int currentQuestionNum=1;
+        do {
+            Read.previewArrayList(getSurveyQuestion(currentQuestionNum));
+            String currentResponse="";
+            do {
+                String input = keyboard.next().toLowerCase();
+                for (int i = 0; i < finalOutput.length; i++) {
+                    //currentResponse = (validInput[i].contains(input)) ? finalOutput[i] : "";
+                    if (validInput[i].contains(input))
+                        currentResponse = finalOutput[i];
+                }
+            }
+            while (currentResponse == "");
+            userAnswers.add(currentResponse);
+            currentQuestionNum++;
+        } while (getSurveyQuestion(currentQuestionNum)!=null);
+
+        System.out.println("Temp: Survey completed :)!");
+        writeSurveyAnswersToFile(userAnswers);
+        keyboard.close();
+
+        setChanged();
+        notifyObservers();
+    }
+    public void writeSurveyAnswersToFile(List temp){
+        SimpleDateFormat formatter = new SimpleDateFormat("MM_dd_yyyy - HH_mm");
+        Date date = new Date();
+        //need to get username from User instance somehow
+        String fileName="user/surveyAnswers/"+this.categoryName+" - "+this.surveyName+" (Completed "+formatter.format(date)+")"+".txt";
+        Read.previewArrayList(temp);
+        Read.arrayListToFile(fileName, temp);
+        System.out.println("Wrote "+fileName+" to file!");
+    }
+    public ArrayList<String> getSurveyQuestion(int num){
+        ArrayList<String> raw = Read.fileToArrayList("surveys/"+this.categoryName+" - "+this.surveyName+".txt");
+        ArrayList<String> temp = new ArrayList<>();
+        boolean add=false;
+        for (String s : raw) {
+
+            if (s.contains(String.valueOf(num)+"."))
+                add=true;
+            else if (s.contains(String.valueOf(num+1))) {
+                add = false; //redundant?
+                break;
+            }
+            if(add)
+                temp.add(s);
+        }
+
+        if (temp.size()>1)
+            return temp;
+        return null;
     }
     public void showResult()
     {
 
     }
-/*    public void parseSurveys {
-        Map<String, List<String>> map = new HashMap<String, List<String>>();
+    //checks what the current survey files are
+    public void updateAvailableSurveys() {
+        for (String s : Read.fileNamesInFolderToArrayList("surveys/"))
+        {
+            String[] temp = s.substring(0,s.length()-4).split(" - ");
+            if (surveyMap.containsKey(temp[0])) //if already contains key (category), update value's list to include the new value
+                surveyMap.replace(temp[0], Stream.of(surveyMap.get(temp[0]), Arrays.asList(temp[1]))
+                        .flatMap(Collection::stream)
+                        .collect(Collectors.toList()));
+            else
+                surveyMap.put(temp[0], Arrays.asList(temp[1]));
+        }
+        setChanged();
+        notifyObservers();
+    }
+    public void printAvailableSurveys(){
+        surveyMap.forEach((k, v) -> System.out.println(k+"\n"+v));
+    }
 
-        // create list one and store values
-        List<String> valSetOne = new ArrayList<String>();
-        valSetOne.add("Apple");
-        valSetOne.add("Aeroplane");
 
-        // create list two and store values
-        List<String> valSetTwo = new ArrayList<String>();
-        valSetTwo.add("Bat");
-        valSetTwo.add("Banana");
-
-        // create list three and store values
-        List<String> valSetThree = new ArrayList<String>();
-        valSetThree.add("Cat");
-        valSetThree.add("Car");
-
-        // put values into map
-        map.put("A", valSetOne);
-        map.put("B", valSetTwo);
-        map.put("C", valSetThree);
-
-    }*/
 // will implement observer stuff later
 /*    public void setState(){
 
@@ -56,8 +167,5 @@ public class Survey {
     public  getState(){
 
     }*/
-  /*  public void notifyObservers()
-    {
 
-    }*/
 }
