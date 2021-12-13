@@ -16,10 +16,12 @@ public class MainClass {
         //Read.previewFileContents("surveys/PERSONALITY - 16 Personality Factors.txt");
 
         IDandPasswords idandpasswords = new IDandPasswords();
-
-
-
         LoginPage loginPage = new LoginPage(idandpasswords.getLoginInfo());
+
+        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
+        Statistics newStatsInstance=new Statistics();
+        newSurveyInstance.addObserver(newStatsInstance);
+        newSurveyInstance.updateAvailableSurveys();
 
     }
 }
