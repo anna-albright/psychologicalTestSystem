@@ -1,9 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 public class User {
-    public static final String FILE_NAME = "account.txt";
     private String name, gender, username, password;
     private int age;
 
@@ -29,9 +27,6 @@ public class User {
         return this.gender;
     }
     public String getUsername(){
-//        username = getName();
-//        int int_random = ThreadLocalRandom.current().nextInt();
-//        return (username.substring(0,1) + String.valueOf(int_random));
         return this.username;
     }
     public String getPassword(){
@@ -42,7 +37,7 @@ public class User {
     }
 
     public void createAccount(String[] input) throws IOException {
-        ArrayList<String> infos = Read.fileToArrayList("user/accountInfo/account.txt");
+        ArrayList<String> infos = Read.fileToArrayList(Singleton.getInstance().getAccountFilePath());
         boolean existed = false;
         for (String s:infos){
             String[] pair = s.split(" ");
@@ -53,19 +48,15 @@ public class User {
         }
         if(existed == false){
             writeAccount(input[0], input[1]);
-            //setUsername(username);
-            //setPassword(password);
+            setUsername(input[0]);
+            setPassword(input[1]);
         }else{
             System.out.println("Already exists. Please use another name and password");
         }
-//        URL res = getClass().getClassLoader().getResource("account.txt");
-//        File file = Paths.get(res.toURI()).toFile();
-//        String absolutePath = file.getAbsolutePath();
-
     }
 
     public String verifyCredentials(String[] input){
-        ArrayList<String> infos = Read.fileToArrayList("user/accountInfo/account.txt");
+        ArrayList<String> infos = Read.fileToArrayList(Singleton.getInstance().getAccountFilePath());
         boolean existed = false;
         for (String s:infos){
             String[] pair = s.split(" ");
@@ -84,7 +75,6 @@ public class User {
     public String[] input(){
         String[] input = new String[2];
         Scanner keyboard;
-        //String username, password;
         keyboard = new Scanner(System.in);
         System.out.println("Username:");
         input[0] = keyboard.next();
@@ -95,13 +85,9 @@ public class User {
     }
     public void writeAccount(String username, String password) throws  IOException{
 
-/*            BufferedWriter writer = new BufferedWriter(new FileWriter("user/accountInfo/account.txt", true));
-            writer.append("\n");
-            writer.append(username+" "+ password);
-            writer.close();*/
         ArrayList<String> temp = new ArrayList<>();
         temp.add(username+" "+ password);
-        Read.arrayListToFile("user/accountInfo/account.txt", temp);
+        Read.arrayListToFile(Singleton.getInstance().getAccountFilePath(), temp);
     }
 
 }

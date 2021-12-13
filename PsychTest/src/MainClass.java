@@ -14,7 +14,7 @@ public class MainClass {
         User newuser = new User();
         String[] info = newuser.input();
         newuser.createAccount(info);
-        System.out.println(newuser.verifyCredentials(info));
+        //System.out.println(newuser.verifyCredentials(info));
 
     }
 }
