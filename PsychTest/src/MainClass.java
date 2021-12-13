@@ -1,8 +1,11 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class MainClass {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+
 
         //Note that the file reader is already pre set to read files within the "data" folder :)
 
@@ -11,10 +14,12 @@ public class MainClass {
 
         //prints entire file contents to the console for our convenience
         //Read.previewFileContents("surveys/PERSONALITY - 16 Personality Factors.txt");
-        User newuser = new User();
-        String[] info = newuser.input();
-        newuser.createAccount(info);
-        //System.out.println(newuser.verifyCredentials(info));
+
+        IDandPasswords idandpasswords = new IDandPasswords();
+
+
+
+        LoginPage loginPage = new LoginPage(idandpasswords.getLoginInfo());
 
     }
 }
