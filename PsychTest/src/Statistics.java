@@ -8,7 +8,7 @@ public class Statistics implements Observer {
 
     public Statistics()
     {
-
+        //test
     }
     public Statistics (String description, String result)
     {
