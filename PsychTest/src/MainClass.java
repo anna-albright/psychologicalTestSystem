@@ -19,12 +19,16 @@ public class MainClass {
         System.out.println(newuser.verifyCredentials(info));*/
 
         //Read.previewArrayList(testing);
-        //Survey.refreshAvailableSurveys();
+
         //Read.previewArrayList(Survey.map.get("APTITUDE"));
         //Survey.printAvailableSurveys();
         Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
-        newSurveyInstance.showSurvey();
-        Read.previewArrayList(newSurveyInstance.showSurvey());
+        Statistics newStatsInstance=new Statistics();
+        newSurveyInstance.addObserver(newStatsInstance);
+        newSurveyInstance.updateAvailableSurveys();
+        //Read.previewArrayList(newSurveyInstance.prepareSurveyAll());
+        newSurveyInstance.takeSurvey();
+        //newSurveyInstance.takeSurvey();
         //Read.previewFileContents("surveys/NEUROPSYCHOLOGY - Beck Depression Index.txt");
     }
 }

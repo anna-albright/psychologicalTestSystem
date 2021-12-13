@@ -36,7 +36,7 @@ public class Read {
 
             for (Object s : temp)
             {
-                writer.write((String)s);
+                writer.write((String)s+"\n");
             }
             writer.close();
 

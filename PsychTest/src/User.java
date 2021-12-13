@@ -1,11 +1,7 @@
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 public class User {
-    public static final String FILE_NAME = "account.txt";
     private String name, gender, username, password;
     private int age;
 
@@ -31,10 +27,7 @@ public class User {
         return this.gender;
     }
     public String getUsername(){
-//        username = getName();
-//        int int_random = ThreadLocalRandom.current().nextInt();
-//        return (username.substring(0,1) + String.valueOf(int_random));
-          return this.username;
+        return this.username;
     }
     public String getPassword(){
         return this.password;
@@ -43,75 +36,58 @@ public class User {
         return this.age;
     }
 
-    public void createAccount(String[] input) throws IOException, URISyntaxException {
-//             URL res = getClass().getClassLoader().getResource("account.txt");
-//             File file = Paths.get(res.toURI()).toFile();
-//             String absolutePath = file.getAbsolutePath();
-
-//             File file = new File("./PsychTest/data/user/accountInfo/account.txt");
-//             String absolutePath = file.getAbsolutePath();
-
-//               URL localPackage = this.getClass().getResource("./PsychTest/data/user/accountInfo/account.txt");
-//               URL urlLoader = User.class.getProtectionDomain().getCodeSource().getLocation();
-//               String localDir = localPackage.getPath();
-//               String loaderDir = urlLoader.getPath();
-
-
-              String[] infos = Read.fileToArray("user/accountInfo/account.txt");
-              boolean existed = false;
-              for (String s:infos){
-                  String[] pair = s.split(" ");
-                  if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
-                      existed=true;
-                      break;
-                  }
-              }
-              if(existed == false){
-                  writeAccount(input[0], input[1]);
-                  //setUsername(username);
-                  //setPassword(password);
-              }else{
-                  System.out.println("Already exists. Please use another name and password");
-              }
-    }
-
-        public String verifyCredentials(String[] input){
-            String[] infos = Read.fileToArray("user/accountInfo/account.txt");
-            boolean existed = false;
-            for (String s:infos){
-                String[] pair = s.split(" ");
-                if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
-                    existed=true;
-                    break;
-                }
-            }
-            if(existed == false){
-                return "We have a problem with sign you in.";
-            }else{
-                return "You are sign in!";
+    public void createAccount(String[] input) throws IOException {
+        ArrayList<String> infos = Read.fileToArrayList(Singleton.getInstance().getAccountFilePath());
+        boolean existed = false;
+        for (String s:infos){
+            String[] pair = s.split(" ");
+            if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
+                existed=true;
+                break;
             }
         }
-
-        public String[] input(){
-            String[] input = new String[2];
-            Scanner keyboard;
-            //String username, password;
-            keyboard = new Scanner(System.in);
-            System.out.println("Username:");
-            input[0] = keyboard.next();
-            System.out.println("Password:");
-            input[1] = keyboard.next();
-            keyboard.close();
-            return input;
+        if(existed == false){
+            writeAccount(input[0], input[1]);
+            setUsername(input[0]);
+            setPassword(input[1]);
+        }else{
+            System.out.println("Already exists. Please use another name and password");
         }
-        public void writeAccount(String username, String password) throws  IOException{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/annak/Desktop/final_project/out/production/final_project/user/accountInfo/account.txt", true));
-            writer.append("\n");
-            writer.append(username+" "+ password);
-            writer.close();
-        }
-
     }
 
+    public String verifyCredentials(String[] input){
+        ArrayList<String> infos = Read.fileToArrayList(Singleton.getInstance().getAccountFilePath());
+        boolean existed = false;
+        for (String s:infos){
+            String[] pair = s.split(" ");
+            if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
+                existed=true;
+                break;
+            }
+        }
+        if(existed == false){
+            return "We have a problem with sign you in.";
+        }else{
+            return "You are sign in!";
+        }
+    }
 
+    public String[] input(){
+        String[] input = new String[2];
+        Scanner keyboard;
+        keyboard = new Scanner(System.in);
+        System.out.println("Username:");
+        input[0] = keyboard.next();
+        System.out.println("Password:");
+        input[1] = keyboard.next();
+        keyboard.close();
+        return input;
+    }
+    public void writeAccount(String username, String password) throws  IOException{
 
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add(username+" "+ password);
+        Read.arrayListToFile(Singleton.getInstance().getAccountFilePath(), temp);
+    }
+
+}
