@@ -70,18 +70,6 @@ public class User {
         return existed;
     }
 
-
-    public String[] input(){
-        String[] input = new String[2];
-        Scanner keyboard;
-        keyboard = new Scanner(System.in);
-        System.out.println("Username:");
-        input[0] = keyboard.next();
-        System.out.println("Password:");
-        input[1] = keyboard.next();
-        keyboard.close();
-        return input;
-    }
     public void writeAccount(String username, String password) throws  IOException{
 
         ArrayList<String> temp = new ArrayList<>();
