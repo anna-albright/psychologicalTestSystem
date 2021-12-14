@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class NewAccountPage implements ActionListener {
@@ -58,11 +59,20 @@ public class NewAccountPage implements ActionListener {
 
             // getting information in the text boxes
             String userID = userIDField.getText();
-
             String password = String.valueOf(userPasswordField.getPassword());
+            MainClass.user = new User();
+            String[] loginInfo = new String[2];
+            loginInfo[0] = userID;
+            loginInfo[1] = password;
 
-            IDandPasswords.putEntry(userID,password); // adding a new user to the system
-            frame.dispose(); // getting rid of create account frame
+            //IDandPasswords.putEntry(userID,password); // adding a new user to the system
+            try {
+                MainClass.user.createAccount(loginInfo);
+                WelcomePage welcomePage = new WelcomePage(userID);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+                frame.dispose(); // getting rid of create account frame
 
         }
 
