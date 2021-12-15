@@ -1,7 +1,20 @@
-Q - What is your name?
-A - no
-A - ew go away
-A - no privacy pls
-A - mary sue
-
-Q - How old are you?
+1. I will continue to work on something until it is perfect
+a. Strongly Agree
+b. Agree
+d. Disagree
+e. Strongly Disagree
+2. I prefer to see concrete results.
+a. Strongly Agree
+b. Agree
+d. Disagree
+e. Strongly Disagree
+3. I prefer others to make decisions.
+a. Strongly Agree
+b. Agree
+d. Disagree
+e. Strongly Disagree
+4. I enjoy being around other people.
+a. Strongly Agree
+b. Agree
+d. Disagree
+e. Strongly Disagree

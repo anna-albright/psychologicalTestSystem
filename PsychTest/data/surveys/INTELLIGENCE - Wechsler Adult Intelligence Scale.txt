@@ -1,7 +1,5 @@
-Q - What is your name?
-A - no
-A - ew go away
-A - no privacy pls
-A - mary sue
-
-Q - How old are you?
+1. Placeholder
+a. Strongly Agree
+b. Agree
+d. Disagree
+e. Strongly Disagree

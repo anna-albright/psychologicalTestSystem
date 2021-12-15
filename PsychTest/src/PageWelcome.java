@@ -75,9 +75,6 @@ public class PageWelcome extends JFrame implements ActionListener {
             j.setMaximumSize(new Dimension(775,65));
         }
 
-/*        for (int i = 0; i<8; i++){ //only render 8 at a time
-            panel.add(csArray.get(i));
-        }*/
         int i=0;
         while (i<csArray.size() && i<8) //set max renders to 8
         {
@@ -146,6 +143,7 @@ public class PageWelcome extends JFrame implements ActionListener {
                         renderButtons();
                         return;
                     }
+
                 }
 
             }
