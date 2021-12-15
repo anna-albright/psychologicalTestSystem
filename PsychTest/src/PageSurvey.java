@@ -16,7 +16,7 @@ public class PageSurvey extends JFrame implements ActionListener {
 
     public PageSurvey(Survey survey)
     {
-        super("PageSurvey test");
+        super("PageSurvey");
         this.survey=survey;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 

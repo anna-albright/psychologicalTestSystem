@@ -31,7 +31,7 @@ public class PageLogin extends JFrame implements ActionListener {
     Color previousColorPasswordField;
 
     public PageLogin(){
-        super("PageSurvey test");
+        super("PageLogin");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         welcomeOption(); //renders welcome screen
@@ -61,7 +61,8 @@ public class PageLogin extends JFrame implements ActionListener {
         if (e.getSource()==buttonGuest)
         {
             dispose();
-            new WelcomePage("Guest");
+            //new WelcomePage("Guest");
+            new PageWelcome();
         }
 
 
@@ -76,7 +77,7 @@ public class PageLogin extends JFrame implements ActionListener {
 
             if(MainClass.user.verifyCredentials(loginInfo)){
                 dispose();
-                WelcomePage welcomePage = new WelcomePage(userID);
+                PageWelcome pageWelcome = new PageWelcome();
             }
 
         }
@@ -91,7 +92,7 @@ public class PageLogin extends JFrame implements ActionListener {
             //IDandPasswords.putEntry(userID,password); // adding a new user to the system
             try {
                 MainClass.user.createAccount(loginInfo);
-                WelcomePage welcomePage = new WelcomePage(userID);
+                PageWelcome pageWelcome = new PageWelcome();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

@@ -12,7 +12,7 @@ public class MainClass {
     static private String bodyFontName="Inter Light";
     static String headerFontName="EB Garamond";
     static Font bodyFontNormal=new Font(bodyFontName, Font.PLAIN, bodyFontSize);
-    static Font bodyFontSelected=new Font(bodyFontName, Font.PLAIN, bodyFontSize);
+    static Font bodyFontSelected=new Font(bodyFontName, Font.BOLD, bodyFontSize);
     static Color customBlue = new Color (8,161,177);
 
     public static void main(String[] args) {
