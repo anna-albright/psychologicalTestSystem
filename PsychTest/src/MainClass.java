@@ -27,18 +27,12 @@ public class MainClass {
 
         Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index"); //choose survey
         newSurveyInstance.updateAvailableSurveys(); //update all available surveys
-        //Survey.printAvailableSurveys();
-        //System.out.println(Survey.surveyMap.get("NEUROPSYCHOLOGY"));
-        //Read.previewArrayList(Read.fileNamesInFolderToArrayList("surveys/"));
-        Read.previewArrayList(Survey.surveyMap.get("PERSONALITY"));
-
         Statistics newStatsInstance=new Statistics(); //new stats instance
         newSurveyInstance.addObserver(newStatsInstance); //add observer, do not uncomment
 
         new PageLogin();
         //new PageConsent();
         //PageSurvey surveyPage = new PageSurvey(newSurveyInstance);
-
 
 
     }
