@@ -129,16 +129,20 @@ public class PageWelcome extends JFrame implements ActionListener {
                         {
                             if (s.equals(j.getText())) //if csarray already has that element
                             {
-                                csArray.remove(j); //remove elemnent (redundant)
+                                csArray.remove(j); //remove element (redundant)
                                 resetCSArray(); //reset entire array
                                 renderButtons(); //render buttons;
                                 return;
                             }
                         }
                         JButton temp = createJButtonFromImageML(s,"categoryInner.png");
-                        resetCSArray();
+                        //resetCSArray();
                         csArray.add(i+1,temp);
-                        csArray.remove(csArray.size() - 1);
+/*                        if (i+1>7) //if clicked at end
+                            csArray.remove(0);
+                        else //if clicked elsewhere
+                            csArray.remove(csArray.size() - 1);
+                        */
                         renderButtons();
                         return;
                     }
@@ -184,7 +188,6 @@ public class PageWelcome extends JFrame implements ActionListener {
                     if (button.getText().equals(categoryDescriptions[i]))
                         button.setText(categoryNames[i]);
                 }
-
             }
             public void mousePressed(MouseEvent e) {
                 button.setForeground(MainClass.customBlue);
