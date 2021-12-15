@@ -70,11 +70,12 @@ public class User {
         return existed;
     }
 
-    public void writeAccount(String username, String password) throws  IOException{
+    public void writeAccount(String username, String password) throws IOException{
 
         ArrayList<String> temp = new ArrayList<>();
         temp.add(username+" "+ password);
-        Read.arrayListToFile(Singleton.getInstance().getAccountFilePath(), temp);
+        //Read.arrayListToFile(Singleton.getInstance().getAccountFilePath(), temp);
+        Read.arrayListToExistingFile(Singleton.getInstance().getAccountFilePath(), temp);
     }
 
 }

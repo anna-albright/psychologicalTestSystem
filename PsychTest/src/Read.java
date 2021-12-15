@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Read {
     static String LOCATION_PRESET="./PsychTest/data/";
-    //static String LOCATION_PRESET="";
+
     //returns each line of the file as an array
     public static ArrayList<String> fileToArrayList(String fileName)
     {
@@ -42,6 +42,15 @@ public class Read {
             System.out.println("Error: Could not write to file!");
             e.printStackTrace();
         }
+    }
+    public static void arrayListToExistingFile(String fileName, ArrayList<String> temp) throws IOException {
+        FileWriter fw = new FileWriter(LOCATION_PRESET+fileName, true);
+        for (String s : temp)
+        {
+            fw.append(s);
+            fw.append("\n");
+        }
+        fw.close();
     }
 
     //prints a list

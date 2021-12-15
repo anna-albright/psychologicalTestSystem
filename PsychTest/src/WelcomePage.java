@@ -8,6 +8,7 @@ public class WelcomePage implements ActionListener {
     JFrame frame = new JFrame();
     ImageIcon icon = new ImageIcon("PsychTest/src/Photos/CS210 GUI Mockup test page.jpg");
     JLabel testPageImage = new JLabel(icon);
+
     // all buttons declaration.
     JButton personalityButton = new JButton("Personality");
     JButton achievementButton = new JButton("Achievement");

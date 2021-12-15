@@ -94,16 +94,16 @@ public class LoginPage implements ActionListener {
 
             if(MainClass.user.verifyCredentials(loginInfo)){
 
-                    messageLabel.setForeground(Color.GREEN);
-                    messageLabel.setText("Login successful");
-                    frame.dispose();
-                    WelcomePage welcomePage = new WelcomePage(userID);
-                }
-                else {
-                    messageLabel.setForeground(Color.RED);
-                    messageLabel.setText("Wrong Input");
+                messageLabel.setForeground(Color.GREEN);
+                messageLabel.setText("Login successful");
+                frame.dispose();
+                WelcomePage welcomePage = new WelcomePage(userID);
+            }
+            else {
+                messageLabel.setForeground(Color.RED);
+                messageLabel.setText("Wrong Input");
 
-                }
+            }
 
         }
         if(e.getSource() == createAccount){
