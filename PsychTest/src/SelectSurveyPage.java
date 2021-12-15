@@ -50,9 +50,9 @@ public class SelectSurveyPage extends JFrame implements ActionListener {
         button.setOpaque(false);
         button.addActionListener(this);
 
-        //button.setVerticalTextPosition(SwingConstants.TOP);
+        
         button.setHorizontalTextPosition(SwingConstants.CENTER);
-        //button.setHorizontalAlignment(SwingConstants.LEFT); //make text justify to left?
+        
         button.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         button.setFont(new Font("Helvetica", Font.PLAIN, 16));
         return button;
@@ -82,7 +82,7 @@ public class SelectSurveyPage extends JFrame implements ActionListener {
         panel.add(firstTest);
         panel.add(secondTest);
 
-        //createQuestionsAndAnswers(survey);
+        
 
         c.add(panel); //add panel to container,
         add(c); //add container to jframe
