@@ -17,7 +17,7 @@ public class Survey extends Observable {
     private static ArrayList<String> userAnswers=new ArrayList<>(); //arrayList to store user responses
     private static int currentNum=1;
     private boolean consentChoice=false; //user's informed consent choice
-    private Map<String, List<String>> surveyMap = new HashMap<String, List<String>>(); //hashmap to store categories and surveys
+    public static Map<String, List<String>> surveyMap = new HashMap<String, List<String>>(); //hashmap to store categories and surveys
 
     public static int getCurrentNum() {
         return currentNum;
@@ -47,7 +47,6 @@ public class Survey extends Observable {
     public void setConsentChoice(boolean consentChoice) {
         this.consentChoice = consentChoice;
     }
-
 
     public Survey()
     {
@@ -167,7 +166,7 @@ public class Survey extends Observable {
         for (String s : Read.fileNamesInFolderToArrayList("surveys/"))
         {
             String[] temp = s.substring(0,s.length()-4).split(" - ");
-            if (surveyMap.containsKey(temp[0])) //if already contains key (category), update value's list to include the new value
+            if (surveyMap.containsKey(temp[0]) && !surveyMap.get(temp[0]).equals(Arrays.asList(temp[1]))) //if already contains key (category), update value's list to include the new value
                 surveyMap.replace(temp[0], Stream.of(surveyMap.get(temp[0]), Arrays.asList(temp[1]))
                         .flatMap(Collection::stream)
                         .collect(Collectors.toList()));
@@ -177,7 +176,7 @@ public class Survey extends Observable {
         setChanged();
         notifyObservers();
     }
-    public void printAvailableSurveys(){
+    public static void printAvailableSurveys(){
         surveyMap.forEach((k, v) -> System.out.println(k+"\n"+v));
     }
 
