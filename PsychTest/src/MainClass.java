@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -23,6 +24,21 @@ public class MainClass {
 //        Statistics newStatsInstance=new Statistics();
 //        newSurveyInstance.addObserver(newStatsInstance);
 //        newSurveyInstance.updateAvailableSurveys();
+        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
+        newSurveyInstance.updateAvailableSurveys();
 
+        Statistics newStatsInstance=new Statistics();
+        newSurveyInstance.addObserver(newStatsInstance);
+        //newSurveyInstance.takeSurvey();
+
+        PageSurvey surveyPage = new PageSurvey(newSurveyInstance);
+
+/*        try {
+            PageSurvey.registerCustomFonts();
+        } catch (IOException | FontFormatException e)
+        {
+            System.out.println("Error!");
+            e.printStackTrace();
+        }*/
     }
 }

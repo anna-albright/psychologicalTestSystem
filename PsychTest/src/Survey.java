@@ -14,26 +14,41 @@ import java.util.Date;
 
 public class Survey extends Observable {
     private String categoryName, surveyName; //category and survey name
-    private ArrayList<String> userAnswers=new ArrayList<>(); //arrayList to store user responses
+    private static ArrayList<String> userAnswers=new ArrayList<>(); //arrayList to store user responses
+    private static int currentNum=1;
     private boolean consentChoice=false; //user's informed consent choice
     private Map<String, List<String>> surveyMap = new HashMap<String, List<String>>(); //hashmap to store categories and surveys
+
+    public static int getCurrentNum() {
+        return currentNum;
+    }
+
+    public static void setCurrentNum(int currentNum) {
+        Survey.currentNum = currentNum;
+    }
+
+    public static ArrayList<String> getUserAnswers(){
+        return Survey.userAnswers;
+    }
+
+    public static void addUserAnswers(String temp){
+        Survey.userAnswers.add(temp);
+    }
+
+
 
     public String getCategoryName() {return categoryName;};
     public void setCategoryName(String categoryName) {this.categoryName=categoryName;}
     public String getSurveyName() {return surveyName;};
     public void setSurveyName(String categoryName) {this.surveyName=surveyName;}
-    public ArrayList<String> getUserAnswers() {
-        return userAnswers;
-    }
-    public void setUserAnswers(ArrayList<String> userAnswers) {
-        this.userAnswers = userAnswers;
-    }
     public boolean getConsentChoice() {
         return consentChoice;
     }
     public void setConsentChoice(boolean consentChoice) {
         this.consentChoice = consentChoice;
     }
+
+
     public Survey()
     {
         updateAvailableSurveys();
@@ -43,6 +58,9 @@ public class Survey extends Observable {
         this.categoryName=categoryName;
         this.surveyName=surveyName;
         updateAvailableSurveys();
+        setChanged();
+        notifyObservers();
+
     }
     /*    public ArrayList<String> prepareSurveyAll()
         {
@@ -107,13 +125,13 @@ public class Survey extends Observable {
         setChanged();
         notifyObservers();
     }
-    public void writeSurveyAnswersToFile(List temp){
+    public void writeSurveyAnswersToFile(ArrayList<String> temp){
         SimpleDateFormat formatter = new SimpleDateFormat("MM_dd_yyyy - HH_mm");
         Date date = new Date();
         //need to get username from User instance somehow
         String fileName="user/surveyAnswers/"+this.categoryName+" - "+this.surveyName+" (Completed "+formatter.format(date)+")"+".txt";
         Read.previewArrayList(temp);
-        Read.arrayListToFile(fileName, (ArrayList<String>) temp);
+        Read.arrayListToFile(fileName, temp);
         System.out.println("Wrote "+fileName+" to file!");
     }
     public ArrayList<String> getSurveyQuestion(int num){
@@ -125,11 +143,15 @@ public class Survey extends Observable {
             if (s.contains(String.valueOf(num)+"."))
                 add=true;
             else if (s.contains(String.valueOf(num+1))) {
-                add = false; //redundant?
+                add=false;
                 break;
             }
             if(add)
+            {
                 temp.add(s);
+                //System.out.println(s);
+            }
+
         }
 
         if (temp.size()>1)
@@ -158,6 +180,7 @@ public class Survey extends Observable {
     public void printAvailableSurveys(){
         surveyMap.forEach((k, v) -> System.out.println(k+"\n"+v));
     }
+
 
 
 // will implement observer stuff later
