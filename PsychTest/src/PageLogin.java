@@ -59,7 +59,11 @@ public class PageLogin extends JFrame implements ActionListener {
         if (e.getSource()==buttonCreate)
             createOption();
         if (e.getSource()==buttonGuest)
-            new WelcomePage("test");
+        {
+            dispose();
+            new WelcomePage("Guest");
+        }
+
 
         if (e.getSource()==yesLogin)
         {
