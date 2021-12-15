@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 public class LoginPage implements ActionListener {
 
@@ -21,15 +20,13 @@ public class LoginPage implements ActionListener {
     JLabel userIDLabel = new JLabel("User ID:");
     JLabel messageLabel = new JLabel("");
 
-    HashMap<String, String> loginInfo = new HashMap<String, String>();
+    String[] loginInfo = new String[2];
 
     /**
      *
-     * @param loginInfoOriginal
      */
-    LoginPage(HashMap<String, String> loginInfoOriginal){
+    LoginPage(){
 
-        loginInfo = loginInfoOriginal;
 
         userIDLabel.setBounds(325,200,75,25);
         userIDLabel.setForeground(new Color(255,160,100));
@@ -91,9 +88,12 @@ public class LoginPage implements ActionListener {
 
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
+            MainClass.user = new User();
+            loginInfo[0] = userID;
+            loginInfo[1] = password;
 
-            if(loginInfo.containsKey(userID)){
-                if(loginInfo.get(userID).equals(password)){
+            if(MainClass.user.verifyCredentials(loginInfo)){
+
                     messageLabel.setForeground(Color.GREEN);
                     messageLabel.setText("Login successful");
                     frame.dispose();
@@ -104,12 +104,6 @@ public class LoginPage implements ActionListener {
                     messageLabel.setText("Wrong Input");
 
                 }
-            }
-            // same output no matter if password or username are wrong.
-            else {
-                messageLabel.setForeground(Color.RED);
-                messageLabel.setText("Wrong Input");
-            }
 
         }
         if(e.getSource() == createAccount){

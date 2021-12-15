@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class MainClass {
+    static User user;
     public static void main(String[] args) {
 
 
@@ -15,13 +16,13 @@ public class MainClass {
         //prints entire file contents to the console for our convenience
         //Read.previewFileContents("surveys/PERSONALITY - 16 Personality Factors.txt");
 
-        IDandPasswords idandpasswords = new IDandPasswords();
-        LoginPage loginPage = new LoginPage(idandpasswords.getLoginInfo());
 
-        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
-        Statistics newStatsInstance=new Statistics();
-        newSurveyInstance.addObserver(newStatsInstance);
-        newSurveyInstance.updateAvailableSurveys();
+        LoginPage loginPage = new LoginPage();
+
+//        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
+//        Statistics newStatsInstance=new Statistics();
+//        newSurveyInstance.addObserver(newStatsInstance);
+//        newSurveyInstance.updateAvailableSurveys();
 
     }
 }

@@ -113,7 +113,7 @@ public class Survey extends Observable {
         //need to get username from User instance somehow
         String fileName="user/surveyAnswers/"+this.categoryName+" - "+this.surveyName+" (Completed "+formatter.format(date)+")"+".txt";
         Read.previewArrayList(temp);
-        Read.arrayListToFile(fileName, temp);
+        Read.arrayListToFile(fileName, (ArrayList<String>) temp);
         System.out.println("Wrote "+fileName+" to file!");
     }
     public ArrayList<String> getSurveyQuestion(int num){

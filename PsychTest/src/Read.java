@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Scanner;
@@ -29,17 +26,17 @@ public class Read {
         }
         return null;
     }
-    public static void arrayListToFile(String fileName, List temp)
+    public static void arrayListToFile(String fileName, ArrayList<String> temp)
     {
         try {
-            FileWriter writer = new FileWriter(LOCATION_PRESET+fileName);
-
-            for (Object s : temp)
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./PsychTest/data/user/accountInfo/account.txt", true));
+            for (String s : temp)
             {
-                writer.write((String)s+"\n");
+                writer.append("\n");
+                writer.append(s);
+
             }
             writer.close();
-
             //System.out.println("Success: Wrote to file!");
 
         } catch (IOException e) {
@@ -47,6 +44,7 @@ public class Read {
             e.printStackTrace();
         }
     }
+
 
     //prints a list
     public static void previewArrayList(List temp){

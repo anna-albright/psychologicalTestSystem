@@ -55,7 +55,7 @@ public class User {
         }
     }
 
-    public String verifyCredentials(String[] input){
+    public static boolean verifyCredentials(String[] input){
         ArrayList<String> infos = Read.fileToArrayList(Singleton.getInstance().getAccountFilePath());
         boolean existed = false;
         for (String s:infos){
@@ -63,26 +63,13 @@ public class User {
             if(pair[0].equals(input[0]) && pair[1].equals(input[1])){
                 existed=true;
                 break;
+            }else{
+                existed = false;
             }
         }
-        if(existed == false){
-            return "We have a problem with sign you in.";
-        }else{
-            return "You are sign in!";
-        }
+        return existed;
     }
 
-    public String[] input(){
-        String[] input = new String[2];
-        Scanner keyboard;
-        keyboard = new Scanner(System.in);
-        System.out.println("Username:");
-        input[0] = keyboard.next();
-        System.out.println("Password:");
-        input[1] = keyboard.next();
-        keyboard.close();
-        return input;
-    }
     public void writeAccount(String username, String password) throws  IOException{
 
         ArrayList<String> temp = new ArrayList<>();
