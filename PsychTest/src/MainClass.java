@@ -40,7 +40,6 @@ public class MainClass {
         //PageSurvey surveyPage = new PageSurvey(newSurveyInstance);
 
 
-
     }
     public static void registerCustomFonts() throws IOException, FontFormatException { //wip
         String locationPreset="./PsychTest/data/fonts/";

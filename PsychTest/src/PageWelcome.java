@@ -99,13 +99,13 @@ public class PageWelcome extends JFrame implements ActionListener {
         {
             if (e.getSource()==j)
             {
-                System.out.println(j.getText());
+                //System.out.println(j.getText());
                 for (Map.Entry<String, List<String>> entry : Survey.surveyMap.entrySet())
                 {
                     for (String s : entry.getValue()){
                         if (s.equals(j.getText()))
                         {
-                            System.out.println("IN HERE!");
+                            System.out.println(entry.getKey()+", "+j.getText());
                             new PageSurvey(new Survey(entry.getKey(),j.getText())); //change to informed consent page instead
                             dispose();
                         }
