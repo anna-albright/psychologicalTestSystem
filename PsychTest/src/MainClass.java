@@ -17,21 +17,21 @@ public class MainClass {
 
     public static void main(String[] args) {
         //implement custom fonts
-//        try {
-//            registerCustomFonts();
-//        } catch (IOException | FontFormatException e)
-//        {
-//            System.out.println("Error!");
-//            e.printStackTrace();
-//        }
+        try {
+            registerCustomFonts();
+        } catch (IOException | FontFormatException e)
+        {
+            System.out.println("Error!");
+            e.printStackTrace();
+        }
+
+        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index"); //choose survey
+        newSurveyInstance.updateAvailableSurveys(); //update all available surveys
+        Statistics newStatsInstance=new Statistics(); //new stats instance
+        newSurveyInstance.addObserver(newStatsInstance); //add observer, do not uncomment
 //
-//        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index"); //choose survey
-//        newSurveyInstance.updateAvailableSurveys(); //update all available surveys
-//        Statistics newStatsInstance=new Statistics(); //new stats instance
-//        newSurveyInstance.addObserver(newStatsInstance); //add observer, do not uncomment
-//
-//        new PageLogin();
-        new PageConsent();
+        new PageLogin();
+        //new PageConsent("NEUROPSYCHOLOGY", "Beck Depression Index");
         //PageSurvey surveyPage = new PageSurvey(newSurveyInstance);
 
 

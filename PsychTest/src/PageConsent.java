@@ -16,10 +16,12 @@ public class PageConsent extends JFrame implements ActionListener {
     JLabel consentText = new JLabel();
     JButton accept = createJButtonFromImage("","check.png");
     JButton cancel = createJButtonFromImage("","ex.png");
+    Survey survey;
 
-    public PageConsent (){
+    public PageConsent (Survey survey){
 
         super("Consent Form");
+        this.survey=survey;
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -86,7 +88,7 @@ public class PageConsent extends JFrame implements ActionListener {
 
         }
         if(e.getSource() == accept){
-            //new PageSurvey(Survey survey);
+            new PageSurvey(survey);
 
         }
 

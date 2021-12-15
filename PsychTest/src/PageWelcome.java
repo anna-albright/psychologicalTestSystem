@@ -103,7 +103,7 @@ public class PageWelcome extends JFrame implements ActionListener {
                         if (s.equals(j.getText()))
                         {
                             System.out.println(entry.getKey()+", "+j.getText());
-                            new PageSurvey(new Survey(entry.getKey(),j.getText())); //change to informed consent page instead
+                            new PageConsent(new Survey(entry.getKey(),j.getText())); //change to informed consent page instead
                             dispose();
                         }
                     }
