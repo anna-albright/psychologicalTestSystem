@@ -157,19 +157,7 @@ public class WelcomePage implements ActionListener {
         buttonCrafter(aptitudeButton);
         aptitudeButton.setBounds(103,431,523,38);
 
-
-
-
-
-
-
-
-
-
-
-
         testPageImage.setSize(700,520);
-
 
         frame.add(welcomeLabel);
         frame.add(personalityButton);
@@ -211,6 +199,33 @@ public class WelcomePage implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == personalityButton){
+            new SelectSurveyPage(personalityButton.getText());
+        }
+        if(e.getSource() == achievementButton){
+
+        }
+        if(e.getSource() == attitudeButton){
+
+        }
+        if(e.getSource() == emotionalIntelligenceButton){
+
+        }
+        if(e.getSource() == intelligenceButton){
+
+        }
+        if(e.getSource() == neuropsychologyButton){
+            Survey newSurveyInstance = new Survey("PERSONALITY", "16 Personality Factors");
+            newSurveyInstance.takeSurvey();
+        }
+        if(e.getSource() == projectiveButton){
+            Survey newSurveyInstance = new Survey("PERSONALITY", "16 Personality Factors");
+            newSurveyInstance.takeSurvey();
+        }
+        if(e.getSource() == aptitudeButton){
+            Survey newSurveyInstance = new Survey("PERSONALITY", "16 Personality Factors");
+            newSurveyInstance.takeSurvey();
+        }
 
     }
 }

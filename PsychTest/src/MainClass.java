@@ -18,20 +18,23 @@ public class MainClass {
         //Read.previewFileContents("surveys/PERSONALITY - 16 Personality Factors.txt");
 
 
-        LoginPage loginPage = new LoginPage();
+        //LoginPage loginPage = new LoginPage();
 
-//        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
+
+          //new SelectSurveyPage("APTITUDE");
+
+//          Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
+//          newSurveyInstance.takeSurvey();
 //        Statistics newStatsInstance=new Statistics();
 //        newSurveyInstance.addObserver(newStatsInstance);
 //        newSurveyInstance.updateAvailableSurveys();
-        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
-        newSurveyInstance.updateAvailableSurveys();
 
-        Statistics newStatsInstance=new Statistics();
-        newSurveyInstance.addObserver(newStatsInstance);
-        //newSurveyInstance.takeSurvey();
-
-        PageSurvey surveyPage = new PageSurvey(newSurveyInstance);
+//        Survey newSurveyInstance=new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
+//        newSurveyInstance.updateAvailableSurveys();
+//        Statistics newStatsInstance=new Statistics();
+//        newSurveyInstance.addObserver(newStatsInstance);
+////        //newSurveyInstance.takeSurvey();
+//        PageSurvey surveyPage = new PageSurvey(newSurveyInstance);
 
 /*        try {
             PageSurvey.registerCustomFonts();

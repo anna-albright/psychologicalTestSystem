@@ -29,12 +29,11 @@ public class Read {
     public static void arrayListToFile(String fileName, ArrayList<String> temp)
     {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("./PsychTest/data/user/accountInfo/account.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(LOCATION_PRESET+fileName, true));
             for (String s : temp)
             {
-                writer.append("\n");
                 writer.append(s);
-
+                writer.append("\n");
             }
             writer.close();
             //System.out.println("Success: Wrote to file!");
@@ -44,7 +43,6 @@ public class Read {
             e.printStackTrace();
         }
     }
-
 
     //prints a list
     public static void previewArrayList(List temp){
