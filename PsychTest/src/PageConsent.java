@@ -43,6 +43,7 @@ public class PageConsent extends JFrame implements ActionListener {
         }
 
         display.setText(listString);
+        display.setFont(MainClass.bodyFontNormal);
         JScrollPane scroll = new JScrollPane ( display );
         scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
 
@@ -61,7 +62,7 @@ public class PageConsent extends JFrame implements ActionListener {
 
         panel.setLayout(boxLayout);
         panel.setOpaque(false);
-        panel.add(Box.createRigidArea(new Dimension(0,75)));
+        panel.add(Box.createRigidArea(new Dimension(0,70)));
         panel.add(consent);
         panel.add(middlePanel);
         panel.add(buttomPanel);
@@ -84,7 +85,7 @@ public class PageConsent extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == cancel){
-            new LoginPage();
+            new PageWelcome();
 
         }
         if(e.getSource() == accept){
