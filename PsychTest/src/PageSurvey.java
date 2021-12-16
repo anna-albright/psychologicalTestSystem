@@ -94,6 +94,7 @@ public class PageSurvey extends JFrame implements ActionListener {
                 {
                     this.survey.writeSurveyAnswersToFile(Survey.getUserAnswers()); //write to file
                     dispose();
+                    new PageResults(this.survey);
                     //System.exit(0); //temporary, REMOVE LATER
                     //PageResults results = new PageResults(this.survey); //IMPLEMENT THIS - make it go to results page
                 }
