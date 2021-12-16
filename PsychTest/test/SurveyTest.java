@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SurveyTest {
 
     @Test
-    void getSurveyQuestion() {
+    void getSurveyQuestion() { //tests if it returns the correct survey question - Sam
         Survey survey = new Survey("NEUROPSYCHOLOGY", "Beck Depression Index");
         ArrayList<String> result = survey.getSurveyQuestion(1);
         Read.previewArrayList(result);

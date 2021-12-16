@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class ReadTest {
+class ReadTest { //tests read class for reading files - Chester
     @org.junit.jupiter.api.Test
     void fileToArrayList() {
         //Read read = new Read();
