@@ -61,32 +61,7 @@ public class Survey extends Observable {
         notifyObservers();
 
     }
-    /*    public ArrayList<String> prepareSurveyAll()
-        {
-            ArrayList<String> raw = Read.fileToArrayList("surveys/"+this.categoryName+" - "+this.surveyName+".txt");
-            ArrayList<String> temp = new ArrayList<>();
-            int replaceQ=1;
-            char replaceA='a';
-            for (String s : raw)
-            {
-                if (s.contains("Q |"))
-                {
-                    s=s.replace("Q |", String.valueOf(replaceQ)+".");
-                    replaceQ++;
-                    replaceA='a';
-                }
-                else if (s.contains("A |"))
-                {
-                    s=s.replace("A |", (Character.toString((char)replaceA))+".");
-                    replaceA++;
-                }
-                temp.add(s);
-            }
-            return temp;
-
-        }
-
-        }*/
+   
     public ArrayList<String> showConsentForm()
     {
         return(Read.fileToArrayList("consentForm.txt"));
@@ -127,7 +102,6 @@ public class Survey extends Observable {
     public void writeSurveyAnswersToFile(ArrayList<String> temp){
         SimpleDateFormat formatter = new SimpleDateFormat("MM_dd_yyyy - HH_mm");
         Date date = new Date();
-        //need to get username from User instance somehow
         String fileName="user/surveyAnswers/"+this.categoryName+" - "+this.surveyName+" (Completed "+formatter.format(date)+")"+".txt";
         Read.previewArrayList(temp);
         Read.arrayListToFile(fileName, temp);
